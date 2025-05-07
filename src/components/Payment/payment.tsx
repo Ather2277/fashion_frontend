@@ -30,7 +30,7 @@ export async function showRazorpayPayment({
   }
 
   try {
-    const data = await fetch("http://localhost:1337/razorpay", {
+    const data = await fetch("https://payment-api-6yfs.onrender.com/razorpay", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount }),
@@ -44,7 +44,7 @@ export async function showRazorpayPayment({
         order_id: data.id,
         name: "Donation",
         description: "Thank you for nothing. Please give us some money",
-        image: "http://localhost:1337/logo.svg",
+        image: "https://payment-api-6yfs.onrender.comlogo.svg",
         handler: function (response: any) {
           console.log("Payment Successful:", response);
           alert("Transaction successful");
