@@ -20,7 +20,7 @@ interface GenerateOutfitResponse {
 }
 
 // Using the deployed API link directly
-const API_URL = 'http://localhost:8000/generate-outfit/';
+const API_URL = 'https://fashion-ai-bsckend.onrender.com/generate-outfit/';
 
 export const generateOutfit = async (
   params: GenerateOutfitParams
