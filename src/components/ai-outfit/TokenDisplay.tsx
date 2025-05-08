@@ -95,6 +95,7 @@ export function TokenDisplay() {
   };
 
   const handleTokenPurchase = async (amount: number, price: number) => {
+    setIsDialogOpen(false);
     const success = await showRazorpayPayment({
       amount: price,
       name: "Rajat",
@@ -104,7 +105,7 @@ export function TokenDisplay() {
 
     if (success) {
       await updateUserTokensInDB(amount);
-      setIsDialogOpen(false);
+      // setIsDialogOpen(false);
       toast.success(`Successfully purchased ${amount} tokens for ₹${price}`);
     } else {
       toast.error("Payment failed or was cancelled.");
