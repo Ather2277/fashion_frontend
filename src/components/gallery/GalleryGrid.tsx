@@ -1,4 +1,3 @@
-
 import { GalleryItem } from './GalleryItem';
 
 interface GalleryGridProps {
@@ -16,6 +15,9 @@ interface GalleryGridProps {
 }
 
 export function GalleryGrid({ items, layout, onLike, onAddToGallery }: GalleryGridProps) {
+  // Show newest items first
+  const sortedItems = [...items].reverse();
+
   return (
     <div 
       className={layout === 'grid' 
@@ -23,7 +25,7 @@ export function GalleryGrid({ items, layout, onLike, onAddToGallery }: GalleryGr
         : "columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6"
       }
     >
-      {items.map((item) => (
+      {sortedItems.map((item) => (
         <GalleryItem 
           key={item.id}
           item={item}
