@@ -20,12 +20,16 @@ const ContactPage: React.FC = () => {
         <div className="space-y-6 max-w-md w-full animate-fade-in">
           <div className="flex items-center gap-4">
             <Mail className="h-6 w-6 text-black" />
-            <span className="text-base">support@aioutfitlab.com</span>
+            <span className="text-base">aethertechwork@gmail.com</span>
           </div>
 
           <div className="flex items-center gap-4">
             <Phone className="h-6 w-6 text-black" />
-            <span className="text-base">+91 98765 43210</span>
+            <span className="text-base">+91 9934550016</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Phone className="h-6 w-6 text-black" />
+            <span className="text-base">+91 9304088627</span>
           </div>
 
           <div className="flex items-center gap-4">
