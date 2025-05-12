@@ -7,7 +7,7 @@ export function NavbarLogo() {
       to="/" 
       className="text-2xl font-bold tracking-tighter"
     >
-      Style<span className="text-purple-600">AI</span>
+      SU<span className="text-purple-600">vastra</span>
     </Link>
   );
 }
