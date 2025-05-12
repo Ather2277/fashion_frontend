@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Mail, Phone, Twitter, Instagram } from "lucide-react";
+import { Mail, Phone, Twitter, Instagram, MapPin } from "lucide-react";
 
 const ContactPage: React.FC = () => {
   return (
