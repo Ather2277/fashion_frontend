@@ -55,6 +55,12 @@ const ContactPage: React.FC = () => {
               @aioutfitlab
             </a>
           </div>
+
+          <div className="flex items-center gap-4">
+            <MapPin className="h-6 w-6 text-black" />
+            <span className="text-base">821308- Katar , Dehri on Sone , Rohtas, Bihar , India.</span>
+          </div>
+          
         </div>
       </main>
 
