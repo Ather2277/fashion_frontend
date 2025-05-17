@@ -38,7 +38,7 @@ export async function showRazorpayPayment({
 
     return new Promise((resolve) => {
       const options = {
-        key: "rzp_test_lTOWrRiJulJmm1",
+        key: import.meta.env.RAZORPAY_KEY_ID,
         currency: data.currency,
         amount: data.amount.toString(),
         order_id: data.id,
