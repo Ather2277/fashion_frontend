@@ -73,8 +73,8 @@ const PrivacyPolicyPage: React.FC = () => {
               Questions or requests? We’re here to help.
             </p>
             <ul className="text-gray-700 mt-2">
-              <li><strong>Email:</strong> mindorbit.official@gmail.com</li>
-              <li><strong>Phone:</strong> +91-XXXXXXXXXX</li>
+              <li><strong>Email:</strong> aethertechwork@gmail.com</li>
+              <li><strong>Phone:</strong> +91-9934550016</li>
             </ul>
           </section>
 

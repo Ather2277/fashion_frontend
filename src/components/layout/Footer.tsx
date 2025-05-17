@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link to="/" className="text-xl font-bold tracking-tighter">
-              Style<span className="text-blue-600">AI</span>
+              SU<span className="text-blue-600">vastra</span>
             </Link>
             <p className="mt-4 text-sm text-gray-600 max-w-xs">
               Revolutionizing fashion design with AI. Create unique, personalized clothing designs in seconds.
