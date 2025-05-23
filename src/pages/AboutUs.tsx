@@ -34,10 +34,10 @@ const AboutPage: React.FC = () => {
 
       <main className="flex flex-col items-center py-20 px-4 mt-16">
         <h1 className="text-4xl font-bold mb-6 text-center animate-fade-in">
-          About MindOrbit.ai
+          About Visthesia
         </h1>
         <p className="text-gray-600 text-md mb-12 text-center max-w-3xl">
-          <strong>MindOrbit.ai</strong> is an AI-first innovation studio focused on developing intelligent, easy-to-use applications that improve everyday experiences. From fashion to productivity, we build tools that make daily life more exciting, personalized, and efficient.
+          <strong>Visthesia</strong> is an AI-first innovation studio focused on developing intelligent, easy-to-use applications that improve everyday experiences. From fashion to productivity, we build tools that make daily life more exciting, personalized, and efficient.
         </p>
 
         <h2 className="text-3xl font-semibold mb-6 text-center">Meet the Team</h2>
