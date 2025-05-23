@@ -150,7 +150,7 @@ export function TokenDisplay() {
                 Add Tokens
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="max-w-3xl w-full">
               <DialogHeader>
                 <DialogTitle>Purchase Tokens</DialogTitle>
                 <DialogDescription>
@@ -158,22 +158,25 @@ export function TokenDisplay() {
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="flex justify-center items-center gap-8 flex-nowrap overflow-x-auto">
                   {[{ tokens: 10, price: 150 }, { tokens: 25, price: 350 }, { tokens: 50, price: 650 }].map(
                     (option, index) => (
-                      <Card key={index} className="cursor-pointer hover:shadow-md transition-shadow">
-                        <CardContent className="p-4 text-center">
-                          <div className="font-bold text-lg">{option.tokens} Tokens</div>
-                          <div className="text-gray-500 mb-4">₹{option.price}</div>
-                          <Button
-                            className="w-full"
-                            onClick={() => handleTokenPurchase(option.tokens, option.price)}
-                          >
-                            <CreditCard className="h-4 w-4 mr-2" />
-                            Buy Now
-                          </Button>
-                        </CardContent>
-                      </Card>
+                      <div
+                        key={index}
+                        className="w-60 rounded-3xl shadow-xl bg-gradient-to-b from-[#b388ff] to-[#7c4dff] text-white p-8 text-center flex flex-col justify-between min-h-[220px]"
+                      >
+                        <div>
+                          <div className="text-2xl font-bold mb-2">{option.tokens} Tokens</div>
+                          <div className="text-3xl font-extrabold mb-6">₹ {option.price}</div>
+                          <div className="text-base mb-6">Generate {option.tokens} unique AI outfits</div>
+                        </div>
+                        <Button
+                          className="bg-black text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-900 transition w-full mt-auto"
+                          onClick={() => handleTokenPurchase(option.tokens, option.price)}
+                        >
+                          BUY NOW
+                        </Button>
+                      </div>
                     )
                   )}
                 </div>
