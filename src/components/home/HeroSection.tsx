@@ -66,7 +66,7 @@ export function HeroSection() {
                 className="bg-purple-600 hover:bg-purple-700 text-white text-lg h-12 px-6"
                 size="lg"
               >
-                Start with Google
+                Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
