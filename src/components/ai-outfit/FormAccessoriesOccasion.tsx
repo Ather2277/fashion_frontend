@@ -25,6 +25,9 @@ export function FormAccessoriesOccasion({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="none">None</SelectItem>
+            <SelectItem value="parure(complete set)">None</SelectItem>
+            <SelectItem value="Necklace">None</SelectItem>
+            <SelectItem value="Bracelet">None</SelectItem>
             <SelectItem value="hats">Hats</SelectItem>
             <SelectItem value="scarves">Scarves</SelectItem>
             <SelectItem value="glasses">Glasses</SelectItem>
