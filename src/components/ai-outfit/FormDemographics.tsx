@@ -25,10 +25,15 @@ export function FormDemographics({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="any">Any</SelectItem>
-            <SelectItem value="Asian">Asian</SelectItem>
-            <SelectItem value="Caucasian">Caucasian</SelectItem>
-            <SelectItem value="African">African</SelectItem>
-            <SelectItem value="Hispanic">Hispanic</SelectItem>
+            <SelectItem value="asian">East Asian</SelectItem>
+            <SelectItem value="south-asian">South Asian</SelectItem>
+            <SelectItem value="african">African / African Descent</SelectItem>
+            <SelectItem value="european">European Descent</SelectItem>
+            <SelectItem value="latino">Latino </SelectItem>
+            <SelectItem value="hispanic">Hispanic</SelectItem>
+            <SelectItem value="middle-eastern">Middle Eastern / North African</SelectItem>
+            <SelectItem value="indian">Indian / Native</SelectItem>
+            <SelectItem value="other">Other / Prefer not to say</SelectItem>
           </SelectContent>
         </Select>
       </div>
