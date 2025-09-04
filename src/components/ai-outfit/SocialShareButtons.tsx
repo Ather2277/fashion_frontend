@@ -2,7 +2,7 @@
 import { toast } from 'sonner';
 import {
   Share, Facebook, Instagram, SearchIcon,
-  MessageCircle, ShoppingBag, Heart, Download
+  MessageCircle, ShoppingBag, Heart, Download,Twitter
 } from 'lucide-react';
 import { ShareButton } from './ShareButton';
 import { databases } from '@/lib/appwrite';
@@ -193,7 +193,7 @@ export function SocialShareButtons({
       <ShareButton icon={MessageCircle} onClick={() => handleShare('whatsapp')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#25D366" color="#ffffff" title="Share on WhatsApp" />
       <ShareButton icon={Instagram} onClick={() => handleShare('instagram')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#E1306C" color="#ffffff" title="Share on Instagram" />
       <ShareButton icon={Facebook} onClick={() => handleShare('facebook')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#3b5998" color="#ffffff" title="Share on Facebook" />
-      <ShareButton icon={Share} onClick={() => handleShare('twitter')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#1DA1F2" color="#ffffff" title="Share on Twitter" />
+      <ShareButton icon={Twitter} onClick={() => handleShare('twitter')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#1DA1F2" color="#ffffff" title="Share on Twitter" />
       <ShareButton icon={ShoppingBag} onClick={() => handleShare('myntra')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#FB56C1" color="#ffffff" title="Search on Myntra" />
       <ShareButton icon={SearchIcon} onClick={() => handleShare('google')} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#4285F4" color="#ffffff" title="Search on Google Shopping" />
       <ShareButton icon={Download} onClick={handleDownload} className="h-8 w-8 rounded-full hover:opacity-90" bgColor="#4CAF50" color="#ffffff" title="Download Image" />
