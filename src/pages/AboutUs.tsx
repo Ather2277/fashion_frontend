@@ -18,13 +18,7 @@ const teamMembers = [
     instagram: "https://instagram.com/kn77.97",
     email: "knj9304@gmail.com",
   },
-  {
-    name: "Sushant Kumar Tiwari",
-    role: "SDE, Founding Engineer",
-    linkedin: "https://linkedin.com/in/sushant-kumar-tiwari",
-    instagram: "https://instagram.com/sushant_k_tiwari",
-    email: "sushant22tiwari801@gmail.com",
-  },
+  
 ];
 
 const AboutPage: React.FC = () => {
