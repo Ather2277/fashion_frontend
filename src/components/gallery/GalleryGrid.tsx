@@ -16,7 +16,7 @@ interface GalleryGridProps {
 
 export function GalleryGrid({ items, layout, onLike, onAddToGallery }: GalleryGridProps) {
   // Show newest items first
-  const sortedItems = [...items].reverse();
+  const sortedItems = [...items];
 
   return (
     <div 
