@@ -86,7 +86,7 @@ const CookiePolicyPage: React.FC = () => {
             </h2>
             <p className="text-gray-700 mb-1">For questions about our use of cookies:</p>
             <ul className="text-gray-800">
-              <li><strong>Email:</strong> aethertechwork@gmail.com</li>
+              <li><strong>Email:</strong> modamorphtech@gmail.com</li>
               <li className="mt-1"><strong>Phone:</strong> +91-9934550016</li>
             </ul>
           </div>
