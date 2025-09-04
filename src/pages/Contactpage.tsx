@@ -20,7 +20,7 @@ const ContactPage: React.FC = () => {
         <div className="space-y-6 max-w-md w-full animate-fade-in">
           <div className="flex items-center gap-4">
             <Mail className="h-6 w-6 text-black" />
-            <span className="text-base">aethertechwork@gmail.com</span>
+            <span className="text-base">modamorphtech@gmail.com</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -35,24 +35,24 @@ const ContactPage: React.FC = () => {
           <div className="flex items-center gap-4">
             <Twitter className="h-6 w-6 text-black" />
             <a
-              href="https://twitter.com/aioutfitlab"
+              href="https://x.com/SU_vastra?t=-_tUfYmbowLsFJ1lc9wubg&s=08"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-              @aioutfitlab
+              @SU_vastra
             </a>
           </div>
 
           <div className="flex items-center gap-4">
             <Instagram className="h-6 w-6 text-black" />
             <a
-              href="https://instagram.com/aioutfitlab"
+              href="https://www.instagram.com/su_vastra?igsh=MWpqejJ3OWE2d2xiNQ=="
               target="_blank"
               rel="noopener noreferrer"
               className="text-pink-600 hover:underline"
             >
-              @aioutfitlab
+              @su_vastra
             </a>
           </div>
 
