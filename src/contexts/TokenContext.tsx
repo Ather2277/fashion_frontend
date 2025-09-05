@@ -14,7 +14,7 @@ const TokenContext = createContext<TokenContextType | undefined>(undefined);
 
 export function TokenProvider({ children }: { children: React.ReactNode }) {
   const auth = useAuth();
-  const { tokens, freeTokens, useToken: authUseToken, addTokens: authAddTokens, isLoading } = auth;
+  const { tokens, freetokens, useToken: authUseToken, addTokens: authAddTokens, isLoading } = auth;
   
   const addTokens = async (amount: number) => {
     await authAddTokens(amount);
@@ -26,7 +26,7 @@ export function TokenProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <TokenContext.Provider value={{ 
-      tokens: (tokens || 0) + (freeTokens || 0), // Total available tokens with fallbacks
+      tokens: (tokens || 0) + (freetokens || 0), // Total available tokens with fallbacks
       addTokens, 
       useToken, 
       isLoadingTokens: isLoading 
