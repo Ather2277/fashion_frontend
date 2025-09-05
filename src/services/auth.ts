@@ -5,7 +5,7 @@ import { toast } from "sonner";
 // Define custom user type to include token info and optional photoUrl
 interface CustomUser extends Models.User<Models.Preferences> {
     tokens: number;
-    freeTokens: number;
+    freetokens: number;
     photoUrl?: string;
 }
 
@@ -44,7 +44,7 @@ export class AuthService {
                         name: userAccount.name,
                         email: userAccount.email,
                         tokens: 0,
-                        freeTokens: 1
+                        freetokens: 1
                     }
                 );
 
@@ -98,7 +98,7 @@ export class AuthService {
                     return {
                         ...user,
                         tokens: userData.tokens || 0,
-                        freeTokens: userData.freeTokens || 0,
+                        freetokens: userData.freetokens || 0,
                         photoUrl: user.prefs?.picture || ''
                     } as CustomUser;
                 } catch (error) {
@@ -113,14 +113,14 @@ export class AuthService {
                                 name: user.name,
                                 email: user.email,
                                 tokens: 0,
-                                freeTokens: 1
+                                freetokens: 1
                             }
                         );
 
                         return {
                             ...user,
                             tokens: 0,
-                            freeTokens: 1,
+                            freetokens: 1,
                             photoUrl: user.prefs?.picture || ''
                         } as CustomUser;
                     } catch (dbError) {
@@ -128,7 +128,7 @@ export class AuthService {
                         return {
                             ...user,
                             tokens: 0,
-                            freeTokens: 0,
+                            freetokens: 0,
                             photoUrl: user.prefs?.picture || ''
                         } as CustomUser;
                     }
@@ -150,12 +150,12 @@ export class AuthService {
                 userId
             );
 
-            if (userData.freeTokens > 0) {
+            if (userData.freetokens > 0) {
                 await this.databases.updateDocument(
                     conf.appwriteDatabaseId,
                     conf.appwriteCollectionIdUsers,
                     userId,
-                    { freeTokens: userData.freeTokens - 1 }
+                    { freetokens: userData.freetokens - 1 }
                 );
                 return true;
             } else if (userData.tokens > 0) {
