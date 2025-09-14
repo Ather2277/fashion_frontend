@@ -33,34 +33,34 @@ export function GalleryItem({ item, layout, onLike, onAddToGallery }: GalleryIte
       }`}
     >
       <div
-        className="relative overflow-hidden cursor-pointer group"
+        className="relative aspect-[3/4] overflow-hidden cursor-pointer group"
         onClick={handleImageClick}
       >
         <img
           src={item.imageUrl}
           alt={item.prompt}
-          className="w-full h-auto object-cover transition-transform transform group-hover:scale-105 duration-300 ease-in-out"
+          className="w-full h-full object-cover transition-transform transform group-hover:scale-105 duration-300 ease-in-out"
         />
       </div>
 
       {/* Enlarged image modal */}
       {isImageEnlarged && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-start pt-20">
-          <div className="relative max-w-[40%] max-h-[60%]">
-            <img
-              src={item.imageUrl}
-              alt={item.prompt}
-              className="w-full h-full object-contain"
-            />
-            <button
-              onClick={handleClose}
-              className="absolute top-2 right-2 bg-white rounded-full p-2 text-xl text-black"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-start pt-20">
+    <div className="relative max-w-[40%] max-h-[60%]">
+      <img
+        src={item.imageUrl}
+        alt={item.prompt}
+        className="w-full h-full object-contain"
+      />
+      <button
+        onClick={handleClose}
+        className="absolute top-2 right-2 bg-white rounded-full p-2 text-xl text-black"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+)}
       <div className="p-4">
         <div className="flex justify-between items-start mb-3">
           <div>
