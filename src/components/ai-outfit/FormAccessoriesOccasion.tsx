@@ -46,7 +46,11 @@ export function FormAccessoriesOccasion({
             <SelectItem value="casual">Casual</SelectItem>
             <SelectItem value="formal">Formal</SelectItem>
             <SelectItem value="party">Party</SelectItem>
-            <SelectItem value="business">Business</SelectItem>
+            <SelectItem value="wedding">Wedding</SelectItem>
+            <SelectItem value="festival">Festival</SelectItem>
+            <SelectItem value="party">Party</SelectItem>
+            <SelectItem value="avant-garde">Avant-Garde</SelectItem>
+            <SelectItem value="gala">Gala</SelectItem>
           </SelectContent>
         </Select>
       </div>
