@@ -84,6 +84,7 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
   const [serverClient, setServerClient] = useState<{ client: Client, storage: Storage } | null>(null);
   const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
+  const [likesMap, setLikesMap] = useState<Record<string, number>>({});
 
   const APPWRITE_ENDPOINT = 'https://cloud.appwrite.io/v1';
   const APPWRITE_PROJECT_ID = '67f001a80013dfc3ff5a';
@@ -106,11 +107,14 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
   useEffect(() => {
     if (!user) return;
     const initial: Record<string, boolean> = {};
+    const counts: Record<string, number> = {};
     items.forEach((it) => {
       const key = `like:${user.id}:${it.id}`;
       try { initial[it.id] = localStorage.getItem(key) === '1'; } catch {}
+      counts[it.id] = typeof it.likes === 'number' ? it.likes : 0;
     });
     setLikedMap(initial);
+    setLikesMap(counts);
   }, [items, user]);
 
   const uploadImageToAppwrite = async (imageUrl: string): Promise<string> => {
@@ -203,15 +207,20 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
     const currentlyLiked = !!likedMap[designId];
     const delta = currentlyLiked ? -1 : 1;
     setLikedMap((m) => ({ ...m, [designId]: !currentlyLiked }));
+    // Optimistically update like count
+    setLikesMap((m) => ({ ...m, [designId]: Math.max(0, (m[designId] ?? items.find(i => i.id === designId)?.likes ?? 0) + delta) }));
     try {
       const doc: any = await databases.getDocument(DATABASE_ID, COLLECTION_ID, designId);
       const newLikes = Math.max(0, (doc.likes || 0) + delta);
       await databases.updateDocument(DATABASE_ID, COLLECTION_ID, designId, { likes: newLikes });
+      setLikesMap((m) => ({ ...m, [designId]: newLikes }));
       try {
         if (currentlyLiked) localStorage.removeItem(key); else localStorage.setItem(key, '1');
       } catch {}
     } catch (error: any) {
       setLikedMap((m) => ({ ...m, [designId]: currentlyLiked }));
+      // Rollback optimistic count change
+      setLikesMap((m) => ({ ...m, [designId]: Math.max(0, (m[designId] ?? items.find(i => i.id === designId)?.likes ?? 0) - delta) }));
       toast.error(error?.message || 'Failed to update like.');
     }
   };
@@ -313,9 +322,12 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
                 )}
               </div>
 
-               <button className={`w-12 h-12 rounded-full flex items-center justify-center ${likedMap[items[currentIdx].id] ? 'bg-red-600 text-white' : 'bg-white/15 text-white hover:bg-white/25'}`} onClick={() => toggleLike(items[currentIdx].id)} title="Like">
-                 <Heart className="w-6 h-6" fill={likedMap[items[currentIdx].id] ? 'currentColor' : 'none'} />
-              </button>
+              <div className="flex flex-col items-center">
+                <button className={`w-12 h-12 rounded-full flex items-center justify-center ${likedMap[items[currentIdx].id] ? 'bg-red-600 text-white' : 'bg-white/15 text-white hover:bg-white/25'}`} onClick={() => toggleLike(items[currentIdx].id)} title="Like">
+                  <Heart className="w-6 h-6" fill={likedMap[items[currentIdx].id] ? 'currentColor' : 'none'} />
+                </button>
+                <span className="mt-1 text-xs text-white/90">{(likesMap[items[currentIdx].id] ?? items[currentIdx].likes) || 0}</span>
+              </div>
             </div>
 
             {/* Mobile actions */}
@@ -374,9 +386,12 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
                 )}
               </div>
 
-               <button className={`w-11 h-11 rounded-full flex items-center justify-center ${likedMap[items[currentIdx].id] ? 'bg-red-600 text-white' : 'bg-white/15 text-white'}`} onClick={() => toggleLike(items[currentIdx].id)} aria-pressed={likedMap[items[currentIdx].id]}>
-                 <Heart className="w-5 h-5" fill={likedMap[items[currentIdx].id] ? 'currentColor' : 'none'} />
-              </button>
+              <div className="flex flex-col items-center">
+                <button className={`w-11 h-11 rounded-full flex items-center justify-center ${likedMap[items[currentIdx].id] ? 'bg-red-600 text-white' : 'bg-white/15 text-white'}`} onClick={() => toggleLike(items[currentIdx].id)} aria-pressed={likedMap[items[currentIdx].id]}>
+                  <Heart className="w-5 h-5" fill={likedMap[items[currentIdx].id] ? 'currentColor' : 'none'} />
+                </button>
+                <span className="mt-1 text-[10px] text-white/90">{(likesMap[items[currentIdx].id] ?? items[currentIdx].likes) || 0}</span>
+              </div>
             </div>
 
             {/* Metadata and description */}
