@@ -13,14 +13,14 @@ interface GalleryItemProps {
   layout: 'grid' | 'masonry';
   onLike: (itemId: string) => void;
   onAddToGallery: (itemId: string) => void;
+  spanClass?: string;
+  onOpen?: () => void;
 }
 
-export function GalleryItem({ item, layout, onLike, onAddToGallery }: GalleryItemProps) {
+export function GalleryItem({ item, layout, onLike, onAddToGallery, spanClass, onOpen }: GalleryItemProps) {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
 
-  const handleImageClick = () => {
-    setIsImageEnlarged(true);
-  };
+  const handleImageClick = () => { if (onOpen) onOpen(); else setIsImageEnlarged(true); };
 
   const handleClose = () => {
     setIsImageEnlarged(false);
@@ -30,10 +30,10 @@ export function GalleryItem({ item, layout, onLike, onAddToGallery }: GalleryIte
     <div 
       className={`bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow ${
         layout === 'masonry' ? 'mb-6 break-inside-avoid' : ''
-      }`}
+      } ${spanClass || ''}`}
     >
       <div
-        className="relative aspect-[3/4] overflow-hidden cursor-pointer group"
+        className="relative w-full h-full overflow-hidden cursor-pointer group"
         onClick={handleImageClick}
       >
         <img
