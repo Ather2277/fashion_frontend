@@ -54,6 +54,8 @@ export function AllGenerationsTabContent({
             createdAt: new Date(doc.$createdAt),
             likes: doc.likes || 0,
           }));
+          // Already ordered by Query.orderDesc but sort again defensively
+          userDesigns.sort((a: any, b: any) => b.createdAt.getTime() - a.createdAt.getTime());
           setDesigns(userDesigns);
         } else {
           setDesigns([]);
