@@ -47,7 +47,11 @@ export class Service {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionIdPosts,
-                [Query.equal("User_Id", userId)] // Change 'userId' to 'User_Id' to match the collection schema
+                [
+                    Query.equal("User_Id", userId),
+                    Query.orderDesc("$createdAt"),
+                    Query.limit(1000000)
+                ]
             );
         } catch (error) {
             console.log("Appwrite service :: getUserPosts :: error", error);
