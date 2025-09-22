@@ -21,25 +21,6 @@ export function GalleryHeader({ layout, setLayout }: GalleryHeaderProps) {
       </div>
       
       <div className="flex items-center gap-4">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-1 flex">
-          <Button 
-            variant={layout === 'grid' ? 'default' : 'ghost'} 
-            size="sm"
-            onClick={() => setLayout('grid')}
-            className="h-8"
-          >
-            <Grid className="h-4 w-4" />
-          </Button>
-          <Button 
-            variant={layout === 'masonry' ? 'default' : 'ghost'} 
-            size="sm"
-            onClick={() => setLayout('masonry')}
-            className="h-8"
-          >
-            <LayoutGrid className="h-4 w-4" />
-          </Button>
-        </div>
-        
         <Button 
           onClick={() => navigate('/ai-outfit-generator')}
           className="bg-purple-600 hover:bg-purple-700 text-white"
