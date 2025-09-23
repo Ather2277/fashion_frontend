@@ -251,103 +251,17 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
     }
   };
 
-  // Reel-like navigation: one item per wheel/gesture, smooth and debounced
-  const wheelLockRef = useRef(false);
-  const touchStartYRef = useRef<number | null>(null);
+  // Disable wheel navigation per request
+  const handleWheel = useCallback((_e: React.WheelEvent) => {}, []);
 
-  const goToNext = useCallback(() => {
-    if (wheelLockRef.current) return;
-    setCurrentIdx((idx) => {
-      const next = Math.min(items.length - 1, idx + 1);
-      return next;
-    });
-    wheelLockRef.current = true;
-    window.setTimeout(() => { wheelLockRef.current = false; }, 450);
-  }, [items.length]);
-
-  const goToPrev = useCallback(() => {
-    if (wheelLockRef.current) return;
-    setCurrentIdx((idx) => {
-      const prev = Math.max(0, idx - 1);
-      return prev;
-    });
-    wheelLockRef.current = true;
-    window.setTimeout(() => { wheelLockRef.current = false; }, 450);
-  }, []);
-
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault();
-    if (Math.abs(e.deltaY) < 20) return;
-    if (e.deltaY > 0) {
-      goToNext();
-    } else if (e.deltaY < 0) {
-      goToPrev();
-    }
-  }, [goToNext, goToPrev]);
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    if (e.touches && e.touches.length > 0) {
-      touchStartYRef.current = e.touches[0].clientY;
-    }
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const startY = touchStartYRef.current;
-    touchStartYRef.current = null;
-    if (startY == null) return;
-    const endY = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0].clientY : startY;
-    const deltaY = endY - startY;
-    if (Math.abs(deltaY) < 30) return;
-    if (deltaY < 0) {
-      // swipe up -> next
-      goToNext();
-    } else {
-      // swipe down -> prev
-      goToPrev();
-    }
-  };
-
-  // Lock background scroll while viewer is open
-  useEffect(() => {
-    const body = document.body;
-    const html = document.documentElement;
-    const previousBodyOverflow = body.style.overflow;
-    const previousBodyPosition = body.style.position;
-    const previousBodyTop = body.style.top;
-    const previousBodyWidth = body.style.width;
-    const previousHtmlOverscroll = html.style.overscrollBehavior;
-    const scrollY = window.scrollY;
-
-    body.style.overflow = 'hidden';
-    body.style.position = 'fixed';
-    body.style.top = `-${scrollY}px`;
-    body.style.width = '100%';
-    html.style.overscrollBehavior = 'none';
-
-    return () => {
-      body.style.overflow = previousBodyOverflow;
-      body.style.position = previousBodyPosition;
-      body.style.top = previousBodyTop;
-      body.style.width = previousBodyWidth;
-      html.style.overscrollBehavior = previousHtmlOverscroll;
-      // restore scroll position
-      window.scrollTo(0, scrollY);
-    };
-  }, []);
-
-  // Keyboard support: ArrowUp/ArrowDown
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); goToNext(); }
-      if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); goToPrev(); }
-    };
-    window.addEventListener('keydown', onKey, { passive: false } as any);
-    return () => window.removeEventListener('keydown', onKey as any);
-  }, [goToNext, goToPrev]);
+  let startY = 0;
+  const onTouchStart = (_e: React.TouchEvent) => {};
+  const onTouchEnd = (_e: React.TouchEvent) => {};
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-black/90">
       <button onClick={onClose} className="absolute top-4 right-4 z-50 text-white/80 hover:text-white"><X className="w-7 h-7" /></button>
-       <div ref={containerRef} className="h-full w-full flex items-center justify-center px-4" onWheel={handleWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchMove={(e) => e.preventDefault()}>
+       <div ref={containerRef} className="h-full w-full flex items-center justify-center px-4" onWheel={handleWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
          {items.length > 0 && (
            <div key={items[currentIdx].id} data-reel-item className="relative w-full h-full flex items-center justify-center">
              <img src={items[currentIdx].imageUrl} alt={items[currentIdx].prompt} className="max-h-[80vh] w-auto object-contain" />
