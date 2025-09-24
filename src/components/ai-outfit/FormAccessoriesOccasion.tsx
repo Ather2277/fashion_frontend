@@ -44,6 +44,7 @@ export function FormAccessoriesOccasion({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="casual">Casual</SelectItem>
+            <SelectItem value="travel">Travel</SelectItem>
             <SelectItem value="formal">Formal</SelectItem>
             <SelectItem value="party">Party</SelectItem>
             <SelectItem value="wedding">Wedding</SelectItem>
