@@ -24,10 +24,14 @@ export function FormAppearance({
             <SelectValue placeholder="Select skin color" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="any">Any</SelectItem>
-            <SelectItem value="fair">Fair</SelectItem>
-            <SelectItem value="medium">Medium</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
+            <SelectItem value="Fair with cool undertones">Fair with cool undertones</SelectItem>
+            <SelectItem value="Fair with warm undertones">Fair with warm undertones</SelectItem>
+            <SelectItem value="Light-medium with neutral undertones">Light-medium with neutral undertones</SelectItem>
+            <SelectItem value="Olive with warm undertones">Olive with warm undertones</SelectItem>
+            <SelectItem value="Tan with golden undertones">Tan with golden undertones</SelectItem>
+            <SelectItem value="Deep with cool undertones">Deep with cool undertones</SelectItem>
+            <SelectItem value="Deep with warm undertones">Deep with warm undertones</SelectItem>
+            <SelectItem value="Ebony rich tone">Ebony rich tone</SelectItem>
           </SelectContent>
         </Select>
       </div>
