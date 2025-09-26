@@ -61,7 +61,7 @@ export function ImageDisplay({
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-[60] flex items-center justify-center p-4">
           <div className="relative bg-white rounded-xl shadow-2xl border border-gray-200 w-full h-full max-w-5xl max-h-[90vh] flex items-center justify-center p-4">
             <button 
               className="absolute top-4 right-4 bg-white shadow-md hover:shadow-lg rounded-full p-2 text-gray-700 hover:text-red-500 transition-all z-10"
