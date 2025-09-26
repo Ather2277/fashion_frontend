@@ -345,12 +345,12 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
   }, [goToNext, goToPrev]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 overflow-hidden">
+    <div className="fixed inset-0 z-[60] bg-black/90 overflow-hidden">
       <button onClick={onClose} className="absolute top-4 right-4 z-50 text-white/80 hover:text-white"><X className="w-7 h-7" /></button>
-       <div ref={containerRef} className="h-full w-full flex items-center justify-center px-4" onWheel={handleWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchMove={(e) => e.preventDefault()}>
-         {items.length > 0 && (
-           <div key={items[currentIdx].id} data-reel-item className="relative w-full h-full flex items-center justify-center">
-             <img src={items[currentIdx].imageUrl} alt={items[currentIdx].prompt} className="max-h-[80vh] w-auto object-contain" />
+       <div ref={containerRef} className="h-full w-full flex items-center justify-center px-4 pb-[88px] md:pb-[96px]" onWheel={handleWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchMove={(e) => e.preventDefault()}>
+          {items.length > 0 && (
+            <div key={items[currentIdx].id} data-reel-item className="relative w-full h-full flex items-center justify-center">
+              <img src={items[currentIdx].imageUrl} alt={items[currentIdx].prompt} className="max-h-[74vh] w-auto object-contain mt-2 md:mt-3" />
 
             {/* Right-side vertical actions */}
              <div className="hidden md:flex flex-col gap-4 absolute right-6 top-1/2 -translate-y-1/2 z-40">
@@ -480,13 +480,15 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
               </div>
             </div>
 
-            {/* Metadata and description */}
-             <div className="absolute bottom-6 left-6 right-24 md:right-40 text-white">
-               <h3 className="text-lg md:text-xl font-semibold">{items[currentIdx].userName}</h3>
-               <p className={`${isDescriptionExpanded ? '' : 'line-clamp-2'} text-white/90 max-w-xl`}>{items[currentIdx].prompt}</p>
-              <button className="mt-2 text-sm underline underline-offset-4" onClick={() => setIsDescriptionExpanded(v => !v)}>
-                {isDescriptionExpanded ? 'Show less' : 'Show more'}
-              </button>
+            {/* Metadata and description - centered just above bottom tab bar */}
+             <div className="absolute bottom-0 md:bottom-1 left-1/2 -translate-x-[58%] translate-y-[2px] md:translate-y-[4px] w-[min(90vw,56rem)] text-white text-center px-4">
+               <div className="inline-flex items-center gap-3">
+                 <h3 className="text-lg md:text-xl font-semibold">{items[currentIdx].userName}</h3>
+                 <button className="text-sm underline underline-offset-4" onClick={() => setIsDescriptionExpanded(v => !v)}>
+                   {isDescriptionExpanded ? 'Show less' : 'Show more'}
+                 </button>
+               </div>
+              <p className={`${isDescriptionExpanded ? '' : 'line-clamp-2'} text-white/90 max-w-3xl mx-auto ml-1 md:ml-2`}>{items[currentIdx].prompt}</p>
             </div>
           </div>
         )}
