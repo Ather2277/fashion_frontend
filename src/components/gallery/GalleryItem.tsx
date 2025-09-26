@@ -45,7 +45,7 @@ export function GalleryItem({ item, layout, onLike, onAddToGallery, spanClass, o
 
       {/* Enlarged image modal */}
       {isImageEnlarged && (
-  <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-start pt-20">
+  <div className="fixed inset-0 bg-black bg-opacity-70 z-[60] flex justify-center items-start pt-20">
     <div className="relative max-w-[40%] max-h-[60%]">
       <img
         src={item.imageUrl}
