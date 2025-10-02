@@ -488,7 +488,7 @@ function ReelViewer({ items, startIndex, onClose }: { items: GalleryGridProps['i
                    {isDescriptionExpanded ? 'Show less' : 'Show more'}
                  </button>
                </div>
-              <p className={`${isDescriptionExpanded ? '' : 'line-clamp-2'} text-white/90 max-w-3xl mx-auto ml-1 md:ml-2`}>{items[currentIdx].prompt}</p>
+             <p className={`${isDescriptionExpanded ? 'max-h-40 overflow-y-auto no-scrollbar' : 'line-clamp-2'} text-white/90 max-w-3xl mx-auto ml-1 md:ml-2`}>{items[currentIdx].prompt}</p>
             </div>
           </div>
         )}
